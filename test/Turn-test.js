@@ -44,7 +44,7 @@ describe('Turn', () => {
 
   it('should provide feedback to the user if guess is incorrect', () => {
     expect(turn.evaluateGuess()).to.equal(false);
-    expect(turn.giveFeedback()).to.equal('Incorrect answer!');
+    expect(turn.giveFeedback()).to.equal('incorrect!');
   });
 
   it('should provide feedback to the user if guess is correct', () => {
@@ -52,6 +52,6 @@ describe('Turn', () => {
     const turn2 = new Turn('sea otter', card2);
 
     expect(turn2.evaluateGuess()).to.equal(true);
-    expect(turn2.giveFeedback()).to.equal('Correct answer!');
+    expect(turn2.giveFeedback()).to.equal('correct!');
   });
 })

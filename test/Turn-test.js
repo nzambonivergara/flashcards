@@ -5,13 +5,9 @@ const Turn = require('../src/Turn');
 const Card = require('../src/Card');
 
 describe('Turn', () => {
-  let turn;
-  let card;
 
-  beforeEach(() => {
-    card = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    turn = new Turn('pug', card);
-  })
+  let card = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+  let turn = new Turn('pug', card);
 
   it('should be a function', () => {
     expect(Turn).to.be.a('function');
@@ -29,6 +25,13 @@ describe('Turn', () => {
     expect(turn.returnGuess()).to.equal('pug');
   });
 
+  it('should return a different guess', () => {
+    const turn2 = new Turn('capybara', card);
+
+    expect(turn2.userAnswer).to.equal('capybara');
+    expect(turn2.returnGuess()).to.equal('capybara');
+  });
+
   it('should be able to take in the current card in play', () => {
     expect(turn.currentCard).to.equal(card);
   });
@@ -40,10 +43,9 @@ describe('Turn', () => {
   it('should evaluate whether the user\'s answer is correct', () => {
     expect(turn.evaluateGuess()).to.be.false;
 
-    const card2 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const turn2 = new Turn('sea otter', card2);
+    const turn3 = new Turn('sea otter', card);
 
-    expect(turn2.evaluateGuess()).to.be.true;
+    expect(turn3.evaluateGuess()).to.be.true;
   });
 
   it('should provide feedback to the user if guess is incorrect', () => {
@@ -52,10 +54,9 @@ describe('Turn', () => {
   });
 
   it('should provide feedback to the user if guess is correct', () => {
-    const card2 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const turn2 = new Turn('sea otter', card2);
+    const turn4 = new Turn('sea otter', card);
 
-    expect(turn2.evaluateGuess()).to.be.true;
-    expect(turn2.giveFeedback()).to.equal('correct!');
+    expect(turn4.evaluateGuess()).to.be.true;
+    expect(turn4.giveFeedback()).to.equal('correct!');
   });
 })

@@ -21,6 +21,7 @@ describe('Turn', () => {
   });
 
   it('should be able to take in a user\'s guess', () => {
+    expect(turn.userAnswer).to.be.a('string');
     expect(turn.userAnswer).to.equal('pug');
   });
 
@@ -36,6 +37,7 @@ describe('Turn', () => {
   });
 
   it('should be able to take in the current card in play', () => {
+    expect(turn.currentCard).to.be.an.instanceof(Card);
     expect(turn.currentCard).to.equal(card);
   });
 

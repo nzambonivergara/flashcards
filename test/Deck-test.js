@@ -24,8 +24,10 @@ describe('Deck', () => {
     expect(deck).to.be.an.instanceof(Deck);
   });
 
-  it('should take in an array of cards', () => {
+  it('should take in an array of card objects', () => {
+    expect(deck.cards).to.be.an('array');
     expect(deck.cards).to.equal(cards);
+    expect(deck.cards[0]).to.be.an.instanceof(Card);
   });
 
   it('should count the cards', () => {

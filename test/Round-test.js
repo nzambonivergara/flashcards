@@ -89,12 +89,20 @@ describe('Round', () => {
       expect(percentCorrect).to.equal(50);
     });
 
-    it('should be able to end the Round', () => {
+    it.only('should log the final message to end the Round', () => {
+      let called, argument;
+      console.log = function () {
+        called = true;
+        argument = arguments[0];
+      };
+
       round.takeTurn('sea otter');
       round.takeTurn('pug');
       const percentCorrect = round.calculatePercentCorrect();
+      round.endRound();
 
-      expect(round.endRound()).to.equal(`** Round over! ** You answered ${percentCorrect}% of the questions correctly!`)
+      expect(called).to.be.true;
+      expect(argument).to.equal(`** Round over! ** You answered ${percentCorrect}% of the questions correctly!`);
     });
   });
 })

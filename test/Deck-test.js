@@ -24,13 +24,15 @@ describe('Deck', () => {
     expect(deck).to.be.an.instanceof(Deck);
   });
 
-  it('should take in an array of card objects', () => {
+  it('should store an array of card objects', () => {
     expect(deck.cards).to.be.an('array');
-    expect(deck.cards).to.equal(cards);
     expect(deck.cards[0]).to.be.an.instanceof(Card);
+    expect(deck.cards).to.equal(cards);
   });
 
-  it('should count the cards', () => {
-    expect(deck.countCards()).to.equal(deck.cards.length);
+  it('should be able to count the cards', () => {
+    const numberOfCards = deck.countCards()
+    
+    expect(numberOfCards).to.equal(deck.cards.length);
   });
 })

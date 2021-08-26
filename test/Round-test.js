@@ -50,10 +50,12 @@ describe('Round', () => {
 
   describe('Round functionality', () => {
     it('should be able to return the current card', () => {
-      expect(round.returnCurrentCard()).to.equal(round.currentCard);
+      const currentCard = round.returnCurrentCard();
+
+      expect(currentCard).to.equal(round.currentCard);
     });
 
-    it('should be able to increment the turns everytime', () => {
+    it('should be able to increment the turns every turn', () => {
       round.takeTurn();
       round.takeTurn();
 
@@ -61,8 +63,11 @@ describe('Round', () => {
     });
 
     it('should evaluate the user\'s guess', () => {
-      expect(round.takeTurn('sea otter')).to.equal('correct!');
-      expect(round.takeTurn('pug')).to.equal('incorrect!')
+      const correctFeedback = round.takeTurn('sea otter');
+      const incorrectFeedback = round.takeTurn('pug');
+
+      expect(correctFeedback).to.equal('correct!');
+      expect(incorrectFeedback).to.equal('incorrect!');
     });
 
     it('should store the card\'s id in the correct guesses property', () => {
@@ -89,7 +94,7 @@ describe('Round', () => {
       expect(percentCorrect).to.equal(50);
     });
 
-    it.only('should log the final message to end the Round', () => {
+    it('should log the final message to end the Round', () => {
       let called, argument;
       console.log = function() {
         called = true;

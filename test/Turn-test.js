@@ -20,29 +20,41 @@ describe('Turn', () => {
     expect(turn).to.be.an.instanceof(Turn);
   });
 
-  it('should be able to take in a user\'s guess', () => {
+  it('should store a user\'s guess', () => {
     expect(turn.userAnswer).to.be.a('string');
     expect(turn.userAnswer).to.equal('pug');
   });
 
   it('should return the user\'s guess', () => {
-    expect(turn.returnGuess()).to.equal('pug');
+    const userGuess = turn.returnGuess();
+
+    expect(userGuess).to.equal('pug');
   });
 
-  it('should return a different guess', () => {
+  it('should be able to return a different guess', () => {
     turn = new Turn('capybara', card);
 
     expect(turn.userAnswer).to.equal('capybara');
     expect(turn.returnGuess()).to.equal('capybara');
   });
 
-  it('should be able to take in the current card in play', () => {
+  it('should store the current card in play', () => {
     expect(turn.currentCard).to.be.an.instanceof(Card);
     expect(turn.currentCard).to.equal(card);
   });
 
-  it('should return the current card', () => {
-    expect(turn.returnCard()).to.equal(card);
+  it('should be able to return the current card', () => {
+    const currentCard = turn.returnCard();
+
+    expect(currentCard).to.equal(card);
+  });
+
+  it('should be able to return a different card', () => {
+    const card2 = new Card(14, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder')
+    turn = new Turn('appendix', card2);
+
+    expect(turn.currentCard).to.equal(card2);
+    expect(turn.returnCard()).to.equal(card2);
   });
 
   it('should evaluate whether the user\'s answer is correct', () => {
@@ -53,15 +65,20 @@ describe('Turn', () => {
     expect(turn2.evaluateGuess()).to.be.true;
   });
 
-  it('should provide feedback to the user if guess is incorrect', () => {
-    expect(turn.evaluateGuess()).to.be.false;
-    expect(turn.giveFeedback()).to.equal('incorrect!');
+  it('should provide feedback if guess is incorrect', () => {
+    const guessEvaluation = turn.evaluateGuess();
+    const feedback = turn.giveFeedback();
+
+    expect(guessEvaluation).to.be.false;
+    expect(feedback).to.equal('incorrect!');
   });
 
-  it('should provide feedback to the user if guess is correct', () => {
-    turn = new Turn('sea otter', card);
+  it('should provide feedback if guess is correct', () => {
+    turn.userAnswer = 'sea otter';
+    const guessEvaluation = turn.evaluateGuess();
+    const feedback = turn.giveFeedback();
 
-    expect(turn.evaluateGuess()).to.be.true;
-    expect(turn.giveFeedback()).to.equal('correct!');
+    expect(guessEvaluation).to.be.true;
+    expect(feedback).to.equal('correct!');
   });
 })

@@ -51,12 +51,12 @@ describe('Game', () => {
     expect(game.deck).to.deep.equal({});
   });
 
-  it('should keep track of the currrent Round', () => {
+  it('should store the currrent Round, which is empty by default', () => {
     expect(game.currentRound).to.be.an('object');
     expect(game.currentRound).to.deep.equal({});
   });
 
-  describe('start method functionality', () => {
+  describe('helper functions for the start method functionality', () => {
     beforeEach(() => {
       game.createCards();
       game.createDeck();

@@ -13,25 +13,33 @@ class Game {
   }
 
   printMessage(deck, round) {
-      console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
+    console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
 
   printQuestion(round) {
-      util.main(round);
+    util.main(round);
   }
 
-  start() {
+  createCards() {
     this.cards = prototypeQuestions.map(card => {
       return new Card(card.id, card.question, card.answers, card.correctAnswer)
     });
+  }
 
+  createDeck() {
     this.deck = new Deck(this.cards);
+  }
 
+  createRound() {
     this.currentRound = new Round(this.deck);
+  }
 
+  start() {
+    this.createCards();
+    this.createDeck();
+    this.createRound();
     this.printMessage(this.deck, this.currentRound);
-
     this.printQuestion(this.currentRound);
   }
 }

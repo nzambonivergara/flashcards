@@ -91,7 +91,7 @@ describe('Round', () => {
 
     it.only('should log the final message to end the Round', () => {
       let called, argument;
-      console.log = function () {
+      console.log = function() {
         called = true;
         argument = arguments[0];
       };

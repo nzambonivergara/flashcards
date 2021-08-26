@@ -57,24 +57,23 @@ describe('Game', () => {
   });
 
   describe('start method functionality', () => {
+    beforeEach(() => {
+      game.createCards();
+      game.createDeck();
+      game.createRound();
+    });
 
-    it('should create cards', () => {
-      game.start();
-
+    it('should have a method that creates cards', () => {
       expect(game.cards[0]).to.be.an.instanceof(Card);
       expect(game.cards[0]).to.deep.equal(cards[0]);
     });
 
-    it('should put cards in the Deck', () => {
-      game.start();
-
+    it('should  have a method that creates a Deck', () => {
       expect(game.deck).to.be.an.instanceof(Deck);
       expect(game.deck.cards[1]).to.deep.equal(cards[1]);
     });
 
-    it('should create a new Round using the deck', () => {
-      game.start();
-
+    it('should have a method that starts a new Round using the deck', () => {
       expect(game.currentRound).to.be.an.instanceof(Round);
       expect(game.currentRound.turns).to.equal(0);
     });

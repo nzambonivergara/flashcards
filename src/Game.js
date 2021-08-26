@@ -1,9 +1,10 @@
 const data = require('./data');
 const prototypeQuestions = data.prototypeData;
+// variable with a different
 const util = require('./util');
-const Round = require('../src/Round');
-const Card = require('../src/Card');
-const Deck = require('../src/Deck');
+const Round = require('./Round');
+const Card = require('./Card');
+const Deck = require('./Deck');
 
 class Game {
   constructor() {

@@ -10,6 +10,10 @@ The user will be prompted for each question, have the opportunity to select an a
 
 ![flashcards in action](https://media.giphy.com/media/244ArSxqlW0sCKHnlJ/giphy.gif?cid=790b7611b3339563af5c8a51536c7ea563cbf331679ae48d&rid=giphy.gif&ct=g)
 
+If the user scores less than 90%, the game restarts automatically.
+
+![flashcards restart](https://user-images.githubusercontent.com/83611094/131061672-8e49076b-c3f2-4ffa-a061-65ee6a77a04e.png)
+
 ## Technologies
 
 - JavaScript
